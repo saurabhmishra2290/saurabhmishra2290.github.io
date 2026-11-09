@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Saurabh Mishra — work, step by step. iOS since 2017; platform SDKs at Gojek.">
+<title>Saurabh — work</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+/* Layout: the same sheet of paper. One dotted rule per job; the company sits on it like "saurabh" does at home; fragments of what was built drift to one side. Alternates left / right down the page. */
+:root{
+  --paper:#F6F3EC;--grain:#E9E3D4;--ink:#262321;--ink-soft:#6B615A;--mustard:#B9922D;--rule:#8A8178;--ubuntu:#E95420;
+  --display:"Cormorant Garamond","EB Garamond",Georgia,serif;--text:"EB Garamond","Cormorant Garamond",Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--text);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;overflow-x:hidden;min-height:100%}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .42 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:1px dotted var(--mustard);outline-offset:4px}
+
+.sheet{position:relative;z-index:2;max-width:1100px;margin:0 auto;container-type:inline-size;padding-block:40px 120px}
+
+.p{margin:0;line-height:1.15;white-space:nowrap;scale:var(--s,1);transition:scale .35s cubic-bezier(.2,.8,.2,1);transform-origin:left center;
+  text-shadow:0 0 2px var(--paper),0 0 4px var(--paper),0 0 8px var(--paper),0 0 14px var(--paper),0 0 22px var(--paper)}
+.tiny{font-size:clamp(11px,1.45cqw,15px);letter-spacing:.12em;color:var(--ink);font-weight:500}
+.tiny u{text-decoration:none;border-bottom:1px solid var(--ink-soft);display:inline-block;width:.7em;margin-left:.35em;transform:translateY(-.15em)}
+.small{font-size:clamp(14px,1.9cqw,21px);letter-spacing:.02em;line-height:1.25}
+.steps span{display:block}
+
+/* top: back + title, echoing home */
+.top{position:relative;height:clamp(180px,26cqw,300px)}
+.back{position:absolute;left:0;top:0;font-size:13px;letter-spacing:.14em;color:var(--ink-soft);display:inline-flex;gap:10px;align-items:center}
+.back::before{content:"••";letter-spacing:-.05em;color:var(--ink)}
+.back::after{content:"/";color:var(--mustard);font-family:var(--display);font-size:1.7em;display:inline-block;transform:rotate(8deg)}
+.back:hover{color:var(--ink)}
+.top h1{position:absolute;left:17%;bottom:18%;font-family:var(--display);font-weight:500;font-size:clamp(42px,7.2cqw,84px);line-height:.85;letter-spacing:-.01em;color:var(--ubuntu)}
+.top .sub{position:absolute;left:30%;bottom:-2%;font-family:var(--display);font-size:clamp(18px,2.6cqw,29px)}
+.top .drift{position:absolute;right:8%;top:30%;text-align:right}
+.top .drift .p{margin-bottom:.9em}
+
+/* each job */
+.job{position:relative;padding:clamp(56px,9cqw,120px) 0 clamp(24px,4cqw,56px);display:grid;grid-template-columns:1fr 1fr;gap:0 6%;align-items:start}
+.job .rule{position:absolute;left:-8%;right:-8%;top:calc(clamp(56px,9cqw,120px) + 1.1em);border-top:1px dotted var(--rule)}
+.job .mark{position:absolute;top:calc(clamp(56px,9cqw,120px) + 1.1em - .75em);font-size:clamp(12px,1.6cqw,17px);letter-spacing:-.05em;color:var(--ink);
+  text-shadow:0 0 2px var(--paper),0 0 5px var(--paper),0 0 10px var(--paper)}
+.job .mark::after{content:"/";color:var(--mustard);font-family:var(--display);font-size:1.9em;margin-left:.15em;display:inline-block;transform:rotate(8deg) translateY(.12em)}
+.job .year{position:absolute;top:calc(clamp(56px,9cqw,120px) + 1.1em - 2.2em);font-size:clamp(11px,1.45cqw,15px);letter-spacing:.14em;color:var(--ink-soft);
+  text-shadow:0 0 2px var(--paper),0 0 5px var(--paper),0 0 10px var(--paper)}
+.job.l .mark{left:-2%}  .job.l .year{left:4%}
+.job.r .mark{right:-2%} .job.r .year{right:4%}
+
+.head{position:relative;z-index:1}
+.co{font-family:var(--display);font-weight:500;font-size:clamp(38px,6cqw,72px);line-height:.85;letter-spacing:-.01em;margin-top:-.08em}
+.role{font-family:var(--display);font-size:clamp(16px,2.2cqw,25px);padding-left:4.5em;margin-top:.45em;white-space:normal;max-width:26ch}
+.place{font-size:clamp(11px,1.4cqw,14px);letter-spacing:.12em;color:var(--ink-soft);padding-left:4.5em;margin-top:1.1em}
+
+.tinies{display:flex;flex-direction:column;gap:.5em;align-items:flex-start;padding-top:.2em}
+.tinies .p:nth-child(2){margin-left:2.6em} .tinies .p:nth-child(3){margin-left:5.4em}
+.frags{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:2.2em 3em;padding-top:2.6em}
+.frags .f1{margin-top:2.4em} .frags .f2{margin-top:4.6em}
+
+.job.l .head{grid-column:1;order:1} .job.l .tinies{grid-column:2;order:2;align-items:flex-end} .job.l .tinies .p:nth-child(2){margin-right:2.6em;margin-left:0} .job.l .tinies .p:nth-child(3){margin-right:5.4em;margin-left:0}
+.job.r .head{grid-column:2;order:2;justify-self:end;text-align:right} .job.r .role,.job.r .place{padding-left:0;padding-right:4.5em}
+.job.r .tinies{grid-column:1;order:1}
+.job.r .frags{order:3} .job.l .frags{order:3}
+.job.r .co{transform-origin:right center}
+
+.end{position:relative;margin-top:clamp(80px,12cqw,160px);text-align:right}
+.end .p{display:inline-block}
+.end a{color:var(--ubuntu);font-weight:500;transition:letter-spacing .25s} .end a:hover{letter-spacing:.06em}
+
+@media (max-width:640px){
+  .sheet{padding-block:28px 80px}
+  .top{height:auto;display:flex;flex-direction:column;gap:22px;padding-bottom:40px}
+  .top .back,.top h1,.top .sub,.top .drift{position:static}
+  .top h1{font-size:clamp(52px,16vw,72px)} .top .sub{margin-left:14%} .top .drift{text-align:right}
+  .job{grid-template-columns:1fr;padding-top:64px}
+  .job .rule{top:64px;left:0;right:0} .job .mark{display:none}
+  .job .year{top:40px;left:0!important;right:auto!important}
+  .job .head,.job .tinies,.job .frags{grid-column:1!important}
+  .job.r .head{justify-self:start;text-align:left} .job.r .role,.job.r .place{padding-left:4.5em;padding-right:0}
+  .job .tinies{order:1;align-items:flex-end!important;margin:0 0 18px} .job .head{order:2;margin-top:.6em} .job .frags{order:3;grid-template-columns:1fr;gap:1.4em;padding-top:1.8em}
+  .frags .f1,.frags .f2{margin-top:0} .frags .f1{margin-left:12%} .frags .f2{margin-left:24%}
+  .co{font-size:clamp(40px,12vw,56px)} .role{font-size:18px} .small{font-size:17px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .job .p{animation:ink 1.2s ease both}
+  @keyframes ink{from{opacity:.001}to{opacity:1}}
+}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="sheet">
+
+<header class="top">
+  <a class="back" href="index.html">home</a>
+  <div class="drift">
+    <p class="p tiny">building<u></u></p>
+    <p class="p tiny">shipping<u></u></p>
+    <p class="p tiny">since 2017<u></u></p>
+  </div>
+  <h1 class="p">work</h1>
+  <p class="p sub">step by step, newest first</p>
+</header>
+
+<section class="job l">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2024 —</span>
+  <div class="head">
+    <h2 class="p co">gojek</h2>
+    <p class="p role">senior ios platform engineer</p>
+    <p class="p place">gurugram · jun 2024 – present</p>
+  </div>
+  <div class="tinies"><p class="p tiny">chat<u></u></p><p class="p tiny">push<u></u></p><p class="p tiny">calling<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">six foundational sdks,</span><span style="padding-left:1.6em">owned end to end:</span><span style="padding-left:3.2em">api, integration, releases.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">webrtc calling</span><span style="padding-left:1.6em">on callkit &amp; pushkit,</span><span style="padding-left:3.2em">sinch giving way</span><span style="padding-left:4.8em">to self-hosted janus.</span></p><p class="p small steps f2"><span style="padding-left:0.0em">narad carries the push:</span><span style="padding-left:1.6em">service extensions,</span><span style="padding-left:3.2em">live activities.</span></p><p class="p small steps f0"><span style="padding-left:0.0em">swift 6, strict concurrency,</span><span style="padding-left:1.6em">actor by actor,</span><span style="padding-left:3.2em">sendable by sendable.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">all of it inside</span><span style="padding-left:1.6em">one bazel monorepo.</span></p></div>
+</section>
+<section class="job r">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2023</span>
+  <div class="head">
+    <h2 class="p co">physicswallah</h2>
+    <p class="p role">software engineer</p>
+    <p class="p place">noida · jan 2023 – jun 2024</p>
+  </div>
+  <div class="tinies"><p class="p tiny">stream<u></u></p><p class="p tiny">secure<u></u></p><p class="p tiny">modular<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">video streaming, playback</span><span style="padding-left:1.6em">tuned, locked down.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">the app re-architected</span><span style="padding-left:1.6em">into modules with xcodegen.</span></p><p class="p small steps f2"><span style="padding-left:0.0em">deep links, routing,</span><span style="padding-left:1.6em">in-app purchase</span><span style="padding-left:3.2em">for bulk payments.</span></p><p class="p small steps f0"><span style="padding-left:0.0em">katex / latex rendering,</span><span style="padding-left:1.6em">built in-house.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">white-label apps</span><span style="padding-left:1.6em">shipped, with their test series.</span></p></div>
+</section>
+<section class="job l">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2022</span>
+  <div class="head">
+    <h2 class="p co">appinventiv</h2>
+    <p class="p role">senior software engineer</p>
+    <p class="p place">noida · jun 2022 – jan 2023</p>
+  </div>
+  <div class="tinies"><p class="p tiny">mqtt<u></u></p><p class="p tiny">ble<u></u></p><p class="p tiny">siri<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">a home that listens:</span><span style="padding-left:1.6em">mqtt into a home-automation app.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">siri over bluetooth,</span><span style="padding-left:1.6em">for a recliner chair.</span></p><p class="p small steps f2"><span style="padding-left:0.0em">a booking system</span><span style="padding-left:1.6em">for virgin airlines.</span></p><p class="p small steps f0"><span style="padding-left:0.0em">a legacy objective-c app</span><span style="padding-left:1.6em">brought from xcode 9</span><span style="padding-left:3.2em">to the present.</span></p></div>
+</section>
+<section class="job r">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2020</span>
+  <div class="head">
+    <h2 class="p co">dew solutions</h2>
+    <p class="p role">software engineer · tata cliq, cliq luxury, neu, beauty</p>
+    <p class="p place">gurugram · mar 2020 – jun 2022</p>
+  </div>
+  <div class="tinies"><p class="p tiny">upi<u></u></p><p class="p tiny">wallet<u></u></p><p class="p tiny">server-driven<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">upi, gift cards, wallets:</span><span style="padding-left:1.6em">the ways money moves.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">product pages,</span><span style="padding-left:1.6em">recommendations.</span></p><p class="p small steps f2"><span style="padding-left:0.0em">associated domains</span><span style="padding-left:1.6em">routing people in</span><span style="padding-left:3.2em">from everywhere.</span></p><p class="p small steps f0"><span style="padding-left:0.0em">ui drawn from the server,</span><span style="padding-left:1.6em">through a template middleware.</span></p></div>
+</section>
+<section class="job l">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2019</span>
+  <div class="head">
+    <h2 class="p co">bareanatomy</h2>
+    <p class="p role">software engineer</p>
+    <p class="p place">gurugram · dec 2019 – mar 2020</p>
+  </div>
+  <div class="tinies"><p class="p tiny">zero to store<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">a hair-care shop</span><span style="padding-left:1.6em">built from nothing:</span><span style="padding-left:3.2em">payments, orders, iap,</span><span style="padding-left:4.8em">published.</span></p></div>
+</section>
+<section class="job r">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2018</span>
+  <div class="head">
+    <h2 class="p co">zorang</h2>
+    <p class="p role">junior ios engineer</p>
+    <p class="p place">gurugram · jul 2018 – dec 2019</p>
+  </div>
+  <div class="tinies"><p class="p tiny">nearby<u></u></p><p class="p tiny">anonymous<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">a hyper-local network,</span><span style="padding-left:1.6em">people found by proximity.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">group chats, anonymous posts,</span><span style="padding-left:1.6em">real-time over xmpp</span><span style="padding-left:3.2em">and an openfire server.</span></p></div>
+</section>
+<section class="job l">
+  <div class="rule"></div>
+  <span class="mark">••</span>
+  <span class="year">2017</span>
+  <div class="head">
+    <h2 class="p co">e-soft · zee5</h2>
+    <p class="p role">junior ios engineer</p>
+    <p class="p place">mumbai / lucknow · jan 2017 – jun 2018</p>
+  </div>
+  <div class="tinies"><p class="p tiny">hls<u></u></p><p class="p tiny">rtmp<u></u></p><p class="p tiny">drm<u></u></p></div>
+  <div class="frags"><p class="p small steps f0"><span style="padding-left:0.0em">video into zee5:</span><span style="padding-left:1.6em">hls, rtmp, drm.</span></p><p class="p small steps f1"><span style="padding-left:0.0em">a download library</span><span style="padding-left:1.6em">for watching offline.</span></p><p class="p small steps f2"><span style="padding-left:0.0em">sugarbox, content without a network,</span><span style="padding-left:1.6em">demoed on indian railways,</span><span style="padding-left:3.2em">airlines, the mumbai metro.</span></p></div>
+</section>
+
+<footer class="end">
+  <p class="p small steps"><span>that is the work so far.</span><span style="padding-left:2.4em">the rest is on the <a href="index.html">home</a> sheet,</span><span style="padding-left:4.8em">or <a href="https://github.com/IpyCreator" rel="noopener">github</a> · <a href="https://medium.com/@saurabhmishra2290" rel="noopener">medium</a> · <a href="https://linkedin.com/in/saurabh-mishra-389b69a5" rel="noopener">linkedin</a>.</span></p>
+</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas=document.getElementById('stars');
+  if(!window.THREE){canvas.hidden=true;return}
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:false});
+  var DPR=Math.min(devicePixelRatio,2);renderer.setPixelRatio(DPR);
+  var scene=new THREE.Scene();
+  // orthographic camera in CSS pixels: one grid cell = one dot on screen
+  var camera=new THREE.OrthographicCamera(0,1,1,0,-10,10);camera.position.z=5;
+
+  var STEP=6;            // one dot every 6 css px, in both directions
+  var pts=null,mat=null;
+  function build(){
+    var w=innerWidth,h=innerHeight;
+    var cols=Math.ceil(w/STEP)+1,rows=Math.ceil(h/STEP)+1,N=cols*rows;
+    var pos=new Float32Array(N*3),col=new Float32Array(N*3),seed=new Float32Array(N);
+    var c=new THREE.Color(),i=0;
+    for(var y=0;y<rows;y++)for(var x=0;x<cols;x++,i++){
+      // scattered, not gridded: each dot lands anywhere on the screen
+      pos[i*3]=Math.random()*w;pos[i*3+1]=Math.random()*h;pos[i*3+2]=0;
+      // every dot its own colour: golden-angle hue walk, with sat/light varied by position
+      c.setHSL((i*0.618033988749895)%1,0.55+0.35*(((x*31+y*17)%7)/7),0.40+0.22*(((x*13+y*7)%5)/5));
+      col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;
+      seed[i]=((x*73856093)^(y*19349663))%1000/1000;
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    g.setAttribute('seed',new THREE.BufferAttribute(seed,1));
+    if(!mat)mat=new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,
+      uniforms:{uTime:{value:0},uPx:{value:DPR},uStep:{value:STEP},uCenter:{value:new THREE.Vector2(w/2,h/2)},uMouse:{value:new THREE.Vector2(-1e4,-1e4)}},
+      vertexShader:[
+        'attribute vec3 color;attribute float seed;',
+        'uniform float uTime;uniform float uPx;uniform float uStep;uniform vec2 uCenter;uniform vec2 uMouse;',
+        'varying vec3 vC;varying float vA;',
+        'void main(){',
+        ' float d=distance(position.xy,uCenter);',
+        // slow rings radiating out from the centre of the screen
+        ' float ring=0.5+0.5*sin(d*0.018-uTime*0.9);',
+        ' float ring2=0.5+0.5*sin(d*0.006-uTime*0.35+seed*2.0);',
+        // each dot blinks on its own clock
+        ' float blink=0.5+0.5*sin(uTime*(0.8+seed*2.4)+seed*62.83);',
+        // a little lift near the cursor
+        ' float m=1.0-smoothstep(0.0,160.0,distance(position.xy,uMouse));',
+        ' float a=(0.10+0.55*ring*ring2)*(0.45+0.55*blink)+m*0.5;',
+        ' vA=clamp(a,0.0,1.0);vC=color;',
+        ' gl_PointSize=uPx*uStep*(0.42+0.45*vA);',
+        ' gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}'].join('\n'),
+      fragmentShader:[
+        'varying vec3 vC;varying float vA;',
+        'void main(){vec2 q=gl_PointCoord-0.5;float d=length(q);',
+        ' if(d>0.5)discard;',
+        ' gl_FragColor=vec4(vC,smoothstep(0.5,0.3,d)*vA*0.6);}'].join('\n')
+    });
+    if(pts){scene.remove(pts);pts.geometry.dispose()}
+    pts=new THREE.Points(g,mat);scene.add(pts);
+    mat.uniforms.uCenter.value.set(w/2,h/2);
+  }
+
+  function resize(){
+    var w=innerWidth,h=innerHeight;
+    renderer.setSize(w,h,false);
+    camera.left=0;camera.right=w;camera.top=h;camera.bottom=0;camera.updateProjectionMatrix();
+    build();
+  }
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(resize,150)});resize();
+
+  var t0=performance.now();
+  var sheet=document.querySelector('.sheet');
+  addEventListener('pointermove',function(e){
+    var mx=e.clientX/innerWidth-0.5,my=e.clientY/innerHeight-0.5;
+    mat.uniforms.uMouse.value.set(e.clientX,innerHeight-e.clientY);
+  });
+  addEventListener('pointerleave',function(){mat.uniforms.uMouse.value.set(-1e4,-1e4);frags.forEach(function(f){f.style.setProperty('--s',1)})});
+
+  // fragments swell a little as the cursor comes near, the way the dots do
+  var frags=Array.prototype.slice.call(document.querySelectorAll('.p'));
+  var RADIUS=180;
+  addEventListener('pointermove',function(e){
+    if(reduce)return;
+    frags.forEach(function(f){
+      var r=f.getBoundingClientRect();
+      var cx=Math.max(r.left,Math.min(e.clientX,r.right)),cy=Math.max(r.top,Math.min(e.clientY,r.bottom));
+      var d=Math.hypot(e.clientX-cx,e.clientY-cy);
+      var k=Math.max(0,1-d/RADIUS);
+      f.style.setProperty('--s',(1+0.18*k*k).toFixed(3));
+    });
+  });
+
+  function frame(now){
+    mat.uniforms.uTime.value=(now-t0)/1000;
+    renderer.render(scene,camera);
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+
+</body>
+</html>
