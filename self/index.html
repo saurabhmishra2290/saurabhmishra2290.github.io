@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Saurabh Mishra talks about the self: present, and not.">
+<title>Saurabh Mishra</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+/* Layout: a single sheet of paper. One anchor word on a ruled line; fragments of thought drift around it, positioned by hand. Committed single paper look. */
+:root{
+  --paper:#F6F3EC;      /* sweater cream, lighter */
+  --grain:#E9E3D4;      /* sweater beige, for texture */
+  --ink:#262321;        /* hair, beard */
+  --ink-soft:#6B615A;   /* warm shadow */
+  --mustard:#B9922D;    /* sweater mustard, used only for the pen marks */
+  --rule:#8A8178;
+  --tape:#D9C9A3;       /* aged postcard edge, for the tape */
+  --ubuntu:#E95420;     /* Ubuntu orange, for "self" */
+  --display:"Cormorant Garamond","EB Garamond",Georgia,serif;
+  --text:"EB Garamond","Cormorant Garamond",Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--text);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;
+  overflow-x:hidden;min-height:100%}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .42 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:1px dotted var(--mustard);outline-offset:4px}
+
+.stage{perspective:1400px;perspective-origin:50% 40%}
+.sheet{position:relative;z-index:2;max-width:1100px;margin:0 auto;container-type:inline-size;min-height:100svh;
+  transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.field{position:relative;width:100%;aspect-ratio:1/1;max-width:100%;transform-style:preserve-3d}
+.p,.card,.rule,.mark,.sections{transform-style:preserve-3d}
+.p{translate:0 0 var(--z,0px);scale:var(--s,1);transition:scale .35s cubic-bezier(.2,.8,.2,1);transform-origin:left center}
+.card,.mark,.sections{translate:0 0 var(--z,0px)}
+@media (max-width:640px){
+  /* phone: the sheet becomes a column; fragments keep their indents and read top to bottom */
+  .sheet{overflow-x:hidden;padding-block:40px 56px}
+  .field{aspect-ratio:auto;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+  .field .p,.field .rule,.field .mark,.field .card,.field .sections{position:static!important;transform:none!important;translate:none!important;left:auto;top:auto}
+  .field .p{margin:0}
+  .tiny{align-self:flex-end;margin-right:8%!important}
+  .field .steps.r{align-self:flex-end;text-align:right}
+  .field .rule{width:100%;margin:10px 0 2px;left:0!important;right:0!important}
+  .field .mark{display:none}
+  .field .card{width:22%;margin:14px 0 -6px 6%;transform:rotate(-3deg)!important}
+  .big{font-size:clamp(52px,16vw,72px)}
+  .mid{font-size:clamp(20px,6vw,26px);margin-left:14%!important}
+  .small{font-size:clamp(16px,4.6vw,19px)}
+  .field .steps.m1{margin-left:26%}
+  .field .steps.m2{margin-left:10%}
+  .field .steps.m3{margin-left:34%}
+  .field .sections{align-self:flex-end;text-align:right;margin-top:40px;line-height:2.2}
+}
+
+/* every piece of type is placed on the sheet */
+.p{position:absolute;white-space:nowrap;line-height:1.15;
+  text-shadow:0 0 2px var(--paper),0 0 4px var(--paper),0 0 8px var(--paper),0 0 14px var(--paper),0 0 22px var(--paper)}
+.sections a,.mark{text-shadow:0 0 2px var(--paper),0 0 5px var(--paper),0 0 10px var(--paper),0 0 16px var(--paper)}
+.tiny{font-size:clamp(11px,1.45cqw,15px);letter-spacing:.12em;color:var(--ink);font-weight:500}
+.tiny u{text-decoration:none;border-bottom:1px solid var(--ink-soft);display:inline-block;width:.7em;margin-left:.35em;transform:translateY(-.15em)}
+.small{font-size:clamp(14px,1.9cqw,21px);letter-spacing:.02em;line-height:1.25}
+.small i{font-style:italic}
+.mid{font-family:var(--display);font-size:clamp(18px,2.6cqw,29px);font-weight:400;letter-spacing:.01em}
+.big{font-family:var(--display);font-size:clamp(42px,7.2cqw,84px);font-weight:500;letter-spacing:-.01em;line-height:.85}
+
+/* ruled lines with the pen mark  •• / */
+.rule{position:absolute;left:-8%;right:-8%;height:0;border-top:1px dotted var(--rule)}
+.mark{position:absolute;font-size:clamp(12px,1.6cqw,17px);color:var(--ink);letter-spacing:-.05em;white-space:nowrap}
+.mark::after{content:"/";color:var(--mustard);font-family:var(--display);font-size:1.9em;margin-left:.15em;display:inline-block;transform:rotate(8deg) translateY(.12em)}
+
+/* the postcard, pinned behind the name */
+.card{position:absolute;left:7.5%;top:36.5%;width:7.5%;max-width:100%;transform:rotate(-3deg);z-index:0;opacity:.92;
+  filter:drop-shadow(2px 6px 10px rgba(60,40,10,.22)) drop-shadow(0 1px 2px rgba(60,40,10,.18))}
+.card img{display:block;width:100%;height:auto}
+.card::after{content:"";position:absolute;left:38%;top:-5%;width:24%;height:7%;background:var(--tape);opacity:.75;transform:rotate(3deg);
+  box-shadow:0 1px 1px rgba(60,40,10,.12)}
+.p.big,.p.mid,.rule,.mark{z-index:1}
+
+
+.steps span{display:block}
+.sections{position:absolute;right:4%;bottom:5%;text-align:right;font-size:clamp(13px,1.6cqw,17px);letter-spacing:.08em;line-height:2.1}
+.sections a{display:block;color:var(--ubuntu);font-weight:500;position:relative;transition:letter-spacing .25s}
+.sections a:hover{color:var(--ubuntu);letter-spacing:.14em}
+.mid a.self{color:var(--ubuntu);font-weight:500;transition:letter-spacing .25s}
+.mid a.self:hover{letter-spacing:.06em}
+.sections a::before{content:"";position:absolute;right:-18px;top:50%;width:6px;height:1px;background:var(--mustard);opacity:0;transition:opacity .2s}
+.sections a:hover::before{opacity:1}
+
+@media (prefers-reduced-motion:no-preference){
+  .p,.rule,.mark{animation:ink 1.4s ease both}
+  .p:nth-of-type(odd){animation-duration:1.8s}
+  .big{animation-delay:.1s}.mid{animation-delay:.25s}.small{animation-delay:.5s}.tiny{animation-delay:.7s}
+  @keyframes ink{from{opacity:.001}to{opacity:1}}
+}
+</style>
+
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="stage"><div class="sheet">
+<div class="field">
+
+  <!-- upper drift -->
+  <p class="p tiny" style="left:56%;top:26%;--z:70px">present<u></u></p>
+  <p class="p tiny" style="left:50%;top:29.5%;--z:30px">and not<u></u></p>
+  <p class="p tiny" style="left:61%;top:33.5%;--z:90px">experienced<u></u></p>
+
+  <p class="p small steps r" style="left:81%;top:37%;text-align:right;transform:translateX(-100%);--z:20px">
+    <span>second-hand</span><span style="padding-left:3.6em">sources,</span><span style="padding-left:1.2em">set aside.</span>
+  </p>
+
+  <!-- the postcard -->
+  <figure class="card" style="margin:0;--z:60px"><img src="postcard.webp" alt="An old, creased postcard print of Saurabh in a mustard and cream checked sweater" width="900" height="900"></figure>
+
+  <!-- the anchor -->
+  <div class="rule" style="top:45.6%"></div>
+  <span class="mark" style="left:-2%;top:43.1%">••</span>
+  <h1 class="p big" id="self" style="left:17%;top:38.5%;margin:0;font-weight:500;--z:110px">saurabh</h1>
+  <p class="p mid" style="left:28%;top:47.5%;margin:0;--z:50px">talks about the <a class="self" href="self.html">self</a></p>
+
+  <!-- lower drift -->
+  <p class="p small steps m1" style="left:62%;top:50%;--z:35px">
+    <span>only what is <i>&amp;</i></span><span style="padding-left:2.4em">felt first-hand</span><span style="padding-left:3.4em">counts as knowing</span>
+  </p>
+
+  <p class="p small steps m2" style="left:45%;top:64%;--z:80px">
+    <span style="padding-left:2.2em">and even that</span><span style="padding-left:4.4em">is borrowed.</span>
+  </p>
+
+  <div class="rule" style="top:66.5%;left:38%;right:-8%"></div>
+  <span class="mark" style="left:80%;top:64%">••</span>
+
+  <p class="p small steps m3" style="left:52%;top:71.5%;--z:25px">
+    <span>some of it</span><span style="padding-left:1.6em">I know,</span><span style="padding-left:3.3em">some I don't.</span>
+  </p>
+
+  <nav class="sections" style="--z:45px">
+    <a href="#work">work</a>
+    <a href="#writings">writings</a>
+    <a href="#like-to-do">like to do</a>
+  </nav>
+
+</div>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas=document.getElementById('stars');
+  if(!window.THREE){canvas.hidden=true;return}
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:false});
+  var DPR=Math.min(devicePixelRatio,2);renderer.setPixelRatio(DPR);
+  var scene=new THREE.Scene();
+  // orthographic camera in CSS pixels: one grid cell = one dot on screen
+  var camera=new THREE.OrthographicCamera(0,1,1,0,-10,10);camera.position.z=5;
+
+  var STEP=6;            // one dot every 6 css px, in both directions
+  var pts=null,mat=null;
+  function build(){
+    var w=innerWidth,h=innerHeight;
+    var cols=Math.ceil(w/STEP)+1,rows=Math.ceil(h/STEP)+1,N=cols*rows;
+    var pos=new Float32Array(N*3),col=new Float32Array(N*3),seed=new Float32Array(N);
+    var c=new THREE.Color(),i=0;
+    for(var y=0;y<rows;y++)for(var x=0;x<cols;x++,i++){
+      // scattered, not gridded: each dot lands anywhere on the screen
+      pos[i*3]=Math.random()*w;pos[i*3+1]=Math.random()*h;pos[i*3+2]=0;
+      // every dot its own colour: golden-angle hue walk, with sat/light varied by position
+      c.setHSL((i*0.618033988749895)%1,0.55+0.35*(((x*31+y*17)%7)/7),0.40+0.22*(((x*13+y*7)%5)/5));
+      col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;
+      seed[i]=((x*73856093)^(y*19349663))%1000/1000;
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    g.setAttribute('seed',new THREE.BufferAttribute(seed,1));
+    if(!mat)mat=new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,
+      uniforms:{uTime:{value:0},uPx:{value:DPR},uStep:{value:STEP},uCenter:{value:new THREE.Vector2(w/2,h/2)},uMouse:{value:new THREE.Vector2(-1e4,-1e4)}},
+      vertexShader:[
+        'attribute vec3 color;attribute float seed;',
+        'uniform float uTime;uniform float uPx;uniform float uStep;uniform vec2 uCenter;uniform vec2 uMouse;',
+        'varying vec3 vC;varying float vA;',
+        'void main(){',
+        ' float d=distance(position.xy,uCenter);',
+        // slow rings radiating out from the centre of the screen
+        ' float ring=0.5+0.5*sin(d*0.018-uTime*0.9);',
+        ' float ring2=0.5+0.5*sin(d*0.006-uTime*0.35+seed*2.0);',
+        // each dot blinks on its own clock
+        ' float blink=0.5+0.5*sin(uTime*(0.8+seed*2.4)+seed*62.83);',
+        // a little lift near the cursor
+        ' float m=1.0-smoothstep(0.0,160.0,distance(position.xy,uMouse));',
+        ' float a=(0.10+0.55*ring*ring2)*(0.45+0.55*blink)+m*0.5;',
+        ' vA=clamp(a,0.0,1.0);vC=color;',
+        ' gl_PointSize=uPx*uStep*(0.42+0.45*vA);',
+        ' gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}'].join('\n'),
+      fragmentShader:[
+        'varying vec3 vC;varying float vA;',
+        'void main(){vec2 q=gl_PointCoord-0.5;float d=length(q);',
+        ' if(d>0.5)discard;',
+        ' gl_FragColor=vec4(vC,smoothstep(0.5,0.3,d)*vA*0.6);}'].join('\n')
+    });
+    if(pts){scene.remove(pts);pts.geometry.dispose()}
+    pts=new THREE.Points(g,mat);scene.add(pts);
+    mat.uniforms.uCenter.value.set(w/2,h/2);
+  }
+
+  function resize(){
+    var w=innerWidth,h=innerHeight;
+    renderer.setSize(w,h,false);
+    camera.left=0;camera.right=w;camera.top=h;camera.bottom=0;camera.updateProjectionMatrix();
+    build();
+  }
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(resize,150)});resize();
+
+  var t0=performance.now();
+  var sheet=document.querySelector('.sheet');
+  addEventListener('pointermove',function(e){
+    var mx=e.clientX/innerWidth-0.5,my=e.clientY/innerHeight-0.5;
+    mat.uniforms.uMouse.value.set(e.clientX,innerHeight-e.clientY);
+    if(!reduce){sheet.style.setProperty('--ry',(mx*6)+'deg');sheet.style.setProperty('--rx',(-my*5)+'deg')}
+  });
+  addEventListener('pointerleave',function(){mat.uniforms.uMouse.value.set(-1e4,-1e4);frags.forEach(function(f){f.style.setProperty('--s',1)})});
+
+  // fragments swell a little as the cursor comes near, the way the dots do
+  var frags=Array.prototype.slice.call(document.querySelectorAll('.p'));
+  var RADIUS=180;
+  addEventListener('pointermove',function(e){
+    if(reduce)return;
+    frags.forEach(function(f){
+      var r=f.getBoundingClientRect();
+      var cx=Math.max(r.left,Math.min(e.clientX,r.right)),cy=Math.max(r.top,Math.min(e.clientY,r.bottom));
+      var d=Math.hypot(e.clientX-cx,e.clientY-cy);
+      var k=Math.max(0,1-d/RADIUS);
+      f.style.setProperty('--s',(1+0.18*k*k).toFixed(3));
+    });
+  });
+
+  function frame(now){
+    mat.uniforms.uTime.value=(now-t0)/1000;
+    renderer.render(scene,camera);
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>
