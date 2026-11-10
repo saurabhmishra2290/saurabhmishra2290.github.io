@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Saurabh Mishra — writings: the novel Mirrors, and essays on the self, iOS, and attention.">
+<title>Saurabh — writings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap">
+<style>
+:root{--paper:#F6F3EC;--ink:#262321;--ink-soft:#6B615A;--mustard:#B9922D;--rule:#8A8178;--ubuntu:#E95420;
+  --display:"Cormorant Garamond","EB Garamond",Georgia,serif;--text:"EB Garamond","Cormorant Garamond",Georgia,serif;color-scheme:light}
+*{box-sizing:border-box} html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--text);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0;overflow-x:hidden;min-height:100%}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .5 0 0 0 0 .42 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none} a:focus-visible{outline:1px dotted var(--mustard);outline-offset:4px}
+.sheet{position:relative;z-index:2;max-width:1100px;margin:0 auto;container-type:inline-size;padding-block:40px 120px}
+.p{margin:0;line-height:1.15;white-space:nowrap;scale:var(--s,1);transition:scale .35s cubic-bezier(.2,.8,.2,1),color .25s;transform-origin:left center;text-shadow:0 0 2px var(--paper),0 0 4px var(--paper),0 0 8px var(--paper),0 0 14px var(--paper),0 0 22px var(--paper)}
+.tiny{font-size:clamp(11px,1.45cqw,15px);letter-spacing:.12em;color:var(--ink);font-weight:500}
+.tiny u{text-decoration:none;border-bottom:1px solid var(--ink-soft);display:inline-block;width:.7em;margin-left:.35em;transform:translateY(-.15em)}
+.small{font-size:clamp(14px,1.9cqw,21px);letter-spacing:.02em;line-height:1.25}
+.steps span{display:block}
+.top{position:relative;height:clamp(180px,26cqw,300px)}
+.back{position:absolute;left:0;top:0;font-size:13px;letter-spacing:.14em;color:var(--ink-soft);display:inline-flex;gap:10px;align-items:center}
+.back::before{content:"••";letter-spacing:-.05em;color:var(--ink)} .back::after{content:"/";color:var(--mustard);font-family:var(--display);font-size:1.7em;display:inline-block;transform:rotate(8deg)} .back:hover{color:var(--ink)}
+.top h1{position:absolute;left:17%;bottom:18%;font-family:var(--display);font-weight:500;font-size:clamp(42px,7.2cqw,84px);line-height:.85;letter-spacing:-.01em;color:var(--ubuntu)}
+.top .sub{position:absolute;left:30%;bottom:-2%;font-family:var(--display);font-size:clamp(18px,2.6cqw,29px)}
+.top .drift{position:absolute;right:8%;top:30%;text-align:right} .top .drift .p{margin-bottom:.9em}
+.rule{position:relative;margin:clamp(48px,8cqw,110px) -8% 0;border-top:1px dotted var(--rule)}
+.rule .mark{position:absolute;top:-.75em;font-size:clamp(12px,1.6cqw,17px);letter-spacing:-.05em;color:var(--ink);text-shadow:0 0 2px var(--paper),0 0 5px var(--paper),0 0 10px var(--paper)}
+.rule .mark::after{content:"/";color:var(--mustard);font-family:var(--display);font-size:1.9em;margin-left:.15em;display:inline-block;transform:rotate(8deg) translateY(.12em)}
+.rule.l .mark{left:5%} .rule.r .mark{right:5%}
+.frag{display:block;color:var(--ink)} .frag:hover,.frag:focus-visible{color:var(--ubuntu)}
+.frag::after{content:"→";display:block;font-size:.8em;color:var(--ubuntu);opacity:0;margin-top:.3em;transition:opacity .25s} .frag:hover::after{opacity:1}
+.soon{color:var(--ink-soft)} .soon .when{font-size:.72em;letter-spacing:.12em;color:var(--ink-soft);margin-top:.5em}
+
+.book{position:relative;display:grid;grid-template-columns:minmax(120px,22%) 1fr;gap:5%;align-items:start;padding:clamp(40px,6cqw,72px) 0 0}
+.book .cover{position:relative;transform:rotate(-2.5deg);filter:drop-shadow(2px 6px 10px rgba(60,40,10,.22));max-width:100%}
+.book .cover img{display:block;width:100%;height:auto}
+.book .cover::after{content:"";position:absolute;left:38%;top:-5%;width:24%;height:6%;background:#D9C9A3;opacity:.75;transform:rotate(3deg)}
+.book .title{font-family:var(--display);font-weight:500;font-size:clamp(38px,6cqw,72px);line-height:.85;letter-spacing:-.01em;margin-top:-.08em}
+.book .title a:hover{color:var(--ubuntu)}
+.book .kicker{font-family:var(--display);font-size:clamp(16px,2.2cqw,25px);padding-left:4.5em;margin-top:.45em;white-space:normal;max-width:30ch}
+.book .about{white-space:normal;max-width:52ch;margin-top:2em;font-size:clamp(15px,1.8cqw,19px);line-height:1.5;color:var(--ink-soft)}
+.book .where{display:flex;gap:2.4em;flex-wrap:wrap;margin-top:1.6em;font-size:clamp(11px,1.4cqw,14px);letter-spacing:.14em}
+.book .where a{color:var(--ubuntu)}
+.list{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between;gap:2.6em 3em;padding-top:clamp(40px,6cqw,72px)}
+.list .f1{margin-top:2.4em} .list .f2{margin-top:4.6em}
+.sect{position:absolute;left:5%;top:-2.4em;font-size:clamp(11px,1.45cqw,15px);letter-spacing:.14em;color:var(--ink-soft)}
+.rule.r .sect{left:auto;right:5%}
+
+@media (max-width:640px){
+  .sheet{padding-block:28px 80px}
+  .top{height:auto;display:flex;flex-direction:column;gap:22px;padding-bottom:40px}
+  .top .back,.top h1,.top .sub,.top .drift{position:static} .top h1{font-size:clamp(52px,16vw,72px)} .top .sub{margin-left:14%} .top .drift{text-align:right}
+  .rule{margin-left:0;margin-right:0} .rule .mark{display:none}
+  .small{font-size:17px}
+  .book{grid-template-columns:1fr;gap:28px} .book .cover{max-width:46%} .list{grid-template-columns:1fr;gap:1.4em} .list .f1,.list .f2{margin-top:0} .list .f1{margin-left:12%} .list .f2{margin-left:24%} .book .title{font-size:clamp(40px,12vw,56px)}
+}
+@media (prefers-reduced-motion:no-preference){ .p{animation:ink 1.2s ease both} @keyframes ink{from{opacity:.001}to{opacity:1}} }
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="sheet">
+<header class="top">
+  <a class="back" href="index.html">home</a>
+  <div class="drift"><p class="p tiny">written<u></u></p><p class="p tiny">unwritten<u></u></p><p class="p tiny">half-written<u></u></p></div>
+  <h1 class="p">writings</h1>
+  <p class="p sub">a novel, and notes toward the next thing</p>
+</header>
+
+<div class="rule l"><span class="mark">••</span><span class="sect">the book</span></div>
+<section class="book">
+  <figure class="cover" style="margin:0"><a href="https://www.amazon.in/dp/B0GR65KVPP" rel="noopener"><img src="../cover.jpg" alt="Cover of Mirrors: A Novel in Fifteen Sessions" width="600" height="900"></a></figure>
+  <div>
+    <h2 class="p title"><a href="https://www.amazon.in/dp/B0GR65KVPP" rel="noopener">mirrors</a></h2>
+    <p class="p kicker">a novel in fifteen sessions</p>
+    <p class="p about">A software engineer in Gurgaon cannot stop watching himself think. Fifteen therapy sessions change how he looks, and what he sees when he does. A novel about the self that is present, and the one that is not.</p>
+    <p class="p where"><a href="https://www.amazon.in/dp/B0GR65KVPP" rel="noopener">kindle · india</a><a href="https://www.amazon.com/dp/B0GR65KVPP" rel="noopener">kindle · us</a><a href="https://saurabhmishra2290.github.io/" rel="noopener">read chapter one</a></p>
+  </div>
+</section>
+
+<div class="rule r"><span class="mark">••</span><span class="sect">essays, coming</span></div>
+<section class="list">
+  <a class="p small steps frag soon f0" href="#"><span>the watcher and the watched:</span><span style="padding-left:1.6em">notes on observing</span><span style="padding-left:3.2em">one's own thinking.</span><span class="when">— draft</span></a>
+  <a class="p small steps frag soon f1" href="#"><span>borrowed understanding:</span><span style="padding-left:1.6em">why first-hand knowing</span><span style="padding-left:3.2em">is also second-hand.</span><span class="when">— draft</span></a>
+  <a class="p small steps frag soon f2" href="#"><span>swift 6 across six sdks:</span><span style="padding-left:1.6em">what broke, and what</span><span style="padding-left:3.2em">the compiler was right about.</span><span class="when">— draft</span></a>
+  <a class="p small steps frag soon f0" href="#"><span>sinch to janus:</span><span style="padding-left:1.6em">replacing a calling vendor</span><span style="padding-left:3.2em">with your own webrtc.</span><span class="when">— draft</span></a>
+  <a class="p small steps frag soon f1" href="#"><span>an sdk that is hard to misuse:</span><span style="padding-left:1.6em">api design for teams</span><span style="padding-left:3.2em">you will never meet.</span><span class="when">— draft</span></a>
+  <a class="p small steps frag soon f2" href="#"><span>sitting still in gurugram:</span><span style="padding-left:1.6em">meditation for someone</span><span style="padding-left:3.2em">who ships on fridays.</span><span class="when">— draft</span></a>
+</section>
+
+<div class="rule l"><span class="mark">••</span><span class="sect">elsewhere</span></div>
+<section class="list" style="grid-template-columns:auto">
+  <p class="p small steps"><span>older technical articles live on</span><span style="padding-left:1.6em"><a href="https://medium.com/@saurabhmishra2290" rel="noopener" style="color:var(--ubuntu)">medium</a>.</span></p>
+</section>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canvas=document.getElementById('stars');
+  if(!window.THREE){canvas.hidden=true;return}
+  var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:false});
+  var DPR=Math.min(devicePixelRatio,2);renderer.setPixelRatio(DPR);
+  var scene=new THREE.Scene();
+  // orthographic camera in CSS pixels: one grid cell = one dot on screen
+  var camera=new THREE.OrthographicCamera(0,1,1,0,-10,10);camera.position.z=5;
+
+  var STEP=6;            // one dot every 6 css px, in both directions
+  var pts=null,mat=null;
+  function build(){
+    var w=innerWidth,h=innerHeight;
+    var cols=Math.ceil(w/STEP)+1,rows=Math.ceil(h/STEP)+1,N=cols*rows;
+    var pos=new Float32Array(N*3),col=new Float32Array(N*3),seed=new Float32Array(N);
+    var c=new THREE.Color(),i=0;
+    for(var y=0;y<rows;y++)for(var x=0;x<cols;x++,i++){
+      // scattered, not gridded: each dot lands anywhere on the screen
+      pos[i*3]=Math.random()*w;pos[i*3+1]=Math.random()*h;pos[i*3+2]=0;
+      // every dot its own colour: golden-angle hue walk, with sat/light varied by position
+      c.setHSL((i*0.618033988749895)%1,0.55+0.35*(((x*31+y*17)%7)/7),0.40+0.22*(((x*13+y*7)%5)/5));
+      col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;
+      seed[i]=((x*73856093)^(y*19349663))%1000/1000;
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    g.setAttribute('color',new THREE.BufferAttribute(col,3));
+    g.setAttribute('seed',new THREE.BufferAttribute(seed,1));
+    if(!mat)mat=new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,
+      uniforms:{uTime:{value:0},uPx:{value:DPR},uStep:{value:STEP},uCenter:{value:new THREE.Vector2(w/2,h/2)},uMouse:{value:new THREE.Vector2(-1e4,-1e4)}},
+      vertexShader:[
+        'attribute vec3 color;attribute float seed;',
+        'uniform float uTime;uniform float uPx;uniform float uStep;uniform vec2 uCenter;uniform vec2 uMouse;',
+        'varying vec3 vC;varying float vA;',
+        'void main(){',
+        ' float d=distance(position.xy,uCenter);',
+        // slow rings radiating out from the centre of the screen
+        ' float ring=0.5+0.5*sin(d*0.018-uTime*0.9);',
+        ' float ring2=0.5+0.5*sin(d*0.006-uTime*0.35+seed*2.0);',
+        // each dot blinks on its own clock
+        ' float blink=0.5+0.5*sin(uTime*(0.8+seed*2.4)+seed*62.83);',
+        // a little lift near the cursor
+        ' float m=1.0-smoothstep(0.0,160.0,distance(position.xy,uMouse));',
+        ' float a=(0.10+0.55*ring*ring2)*(0.45+0.55*blink)+m*0.5;',
+        ' vA=clamp(a,0.0,1.0);vC=color;',
+        ' gl_PointSize=uPx*uStep*(0.42+0.45*vA);',
+        ' gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}'].join('\n'),
+      fragmentShader:[
+        'varying vec3 vC;varying float vA;',
+        'void main(){vec2 q=gl_PointCoord-0.5;float d=length(q);',
+        ' if(d>0.5)discard;',
+        ' gl_FragColor=vec4(vC,smoothstep(0.5,0.3,d)*vA*0.6);}'].join('\n')
+    });
+    if(pts){scene.remove(pts);pts.geometry.dispose()}
+    pts=new THREE.Points(g,mat);scene.add(pts);
+    mat.uniforms.uCenter.value.set(w/2,h/2);
+  }
+
+  function resize(){
+    var w=innerWidth,h=innerHeight;
+    renderer.setSize(w,h,false);
+    camera.left=0;camera.right=w;camera.top=h;camera.bottom=0;camera.updateProjectionMatrix();
+    build();
+  }
+  var rt;addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(resize,150)});resize();
+
+  var t0=performance.now();
+  var sheet=document.querySelector('.sheet');
+  addEventListener('pointermove',function(e){
+    var mx=e.clientX/innerWidth-0.5,my=e.clientY/innerHeight-0.5;
+    mat.uniforms.uMouse.value.set(e.clientX,innerHeight-e.clientY);
+  });
+  addEventListener('pointerleave',function(){mat.uniforms.uMouse.value.set(-1e4,-1e4);frags.forEach(function(f){f.style.setProperty('--s',1)})});
+
+  // fragments swell a little as the cursor comes near, the way the dots do
+  var frags=Array.prototype.slice.call(document.querySelectorAll('.p'));
+  var RADIUS=180;
+  addEventListener('pointermove',function(e){
+    if(reduce)return;
+    frags.forEach(function(f){
+      var r=f.getBoundingClientRect();
+      var cx=Math.max(r.left,Math.min(e.clientX,r.right)),cy=Math.max(r.top,Math.min(e.clientY,r.bottom));
+      var d=Math.hypot(e.clientX-cx,e.clientY-cy);
+      var k=Math.max(0,1-d/RADIUS);
+      f.style.setProperty('--s',(1+0.18*k*k).toFixed(3));
+    });
+  });
+
+  function frame(now){
+    mat.uniforms.uTime.value=(now-t0)/1000;
+    renderer.render(scene,camera);
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+
+</body>
+</html>
